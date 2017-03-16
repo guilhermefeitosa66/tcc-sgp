@@ -1,0 +1,29 @@
+<div class='ui padded center aligned teal segment show'>
+    <p>
+    <strong>name:</strong>
+    <%= @project.name %>
+  </p>
+
+    <p>
+    <strong>size:</strong>
+    <%= @project.size %>
+  </p>
+
+    <p>
+    <strong>start_date:</strong>
+    <%= @project.start_date %>
+  </p>
+
+    <p>
+    <strong>end_date:</strong>
+    <%= @project.end_date %>
+  </p>
+
+    <p>
+    <strong>local:</strong>
+    <%= @project.local %>
+  </p>
+
+    <%= link_to 'Editar', edit_project_path(@project), class: 'ui button' %>
+  <%= link_to 'Voltar', projects_path, class: 'ui button' %>
+</div>

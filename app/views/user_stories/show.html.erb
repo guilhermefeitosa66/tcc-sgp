@@ -1,0 +1,29 @@
+<div class='ui padded center aligned teal segment show'>
+    <p>
+    <strong>description:</strong>
+    <%= @user_story.description %>
+  </p>
+
+    <p>
+    <strong>business_value:</strong>
+    <%= @user_story.business_value %>
+  </p>
+
+    <p>
+    <strong>status:</strong>
+    <%= @user_story.status %>
+  </p>
+
+    <p>
+    <strong>story_points:</strong>
+    <%= @user_story.story_points %>
+  </p>
+
+    <p>
+    <strong>theme:</strong>
+    <%= @user_story.theme %>
+  </p>
+
+    <%= link_to 'Editar', edit_user_story_path(@user_story), class: 'ui button' %>
+  <%= link_to 'Voltar', user_stories_path, class: 'ui button' %>
+</div>

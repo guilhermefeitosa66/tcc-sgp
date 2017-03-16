@@ -1,0 +1,54 @@
+<div class='ui padded center aligned teal segment show'>
+    <p>
+    <strong>project:</strong>
+    <%= @sprint.project %>
+  </p>
+
+    <p>
+    <strong>start_date:</strong>
+    <%= @sprint.start_date %>
+  </p>
+
+    <p>
+    <strong>end_date:</strong>
+    <%= @sprint.end_date %>
+  </p>
+
+    <p>
+    <strong>planning_start_date:</strong>
+    <%= @sprint.planning_start_date %>
+  </p>
+
+    <p>
+    <strong>planning_end_date:</strong>
+    <%= @sprint.planning_end_date %>
+  </p>
+
+    <p>
+    <strong>execution_start_date:</strong>
+    <%= @sprint.execution_start_date %>
+  </p>
+
+    <p>
+    <strong>execution_end_date:</strong>
+    <%= @sprint.execution_end_date %>
+  </p>
+
+    <p>
+    <strong>review_meeting_date:</strong>
+    <%= @sprint.review_meeting_date %>
+  </p>
+
+    <p>
+    <strong>retrospective_meeting_date:</strong>
+    <%= @sprint.retrospective_meeting_date %>
+  </p>
+
+    <p>
+    <strong>release:</strong>
+    <%= @sprint.release %>
+  </p>
+
+    <%= link_to 'Editar', edit_sprint_path(@sprint), class: 'ui button' %>
+  <%= link_to 'Voltar', sprints_path, class: 'ui button' %>
+</div>

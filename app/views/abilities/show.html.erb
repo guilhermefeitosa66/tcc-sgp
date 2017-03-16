@@ -1,0 +1,19 @@
+<div class='ui padded center aligned teal segment show'>
+    <p>
+    <strong>name:</strong>
+    <%= @ability.name %>
+  </p>
+
+    <p>
+    <strong>description:</strong>
+    <%= @ability.description %>
+  </p>
+
+    <p>
+    <strong>scope:</strong>
+    <%= @ability.scope %>
+  </p>
+
+    <%= link_to 'Editar', edit_ability_path(@ability), class: 'ui button' %>
+  <%= link_to 'Voltar', abilities_path, class: 'ui button' %>
+</div>

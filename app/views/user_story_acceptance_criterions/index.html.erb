@@ -1,0 +1,30 @@
+
+<h1 class="ui header" >User Story Acceptance Criterions</h1>
+
+<table class='ui orange table'>
+  <thead>
+    <tr>
+      <th>Description</th>
+      <th>Status</th>
+      <th>User story</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @user_story_acceptance_criterions.each do |user_story_acceptance_criterion| %>
+      <tr>
+        <td><%= user_story_acceptance_criterion.description %></td>
+        <td><%= user_story_acceptance_criterion.status %></td>
+        <td><%= user_story_acceptance_criterion.user_story %></td>
+        <td><%= link_to 'Detalhes', user_story_acceptance_criterion, class: 'ui tiny blue basic button' %></td>
+        <td><%= link_to 'Editar', edit_user_story_acceptance_criterion_path(user_story_acceptance_criterion), class: 'ui tiny blue basic button' %></td>
+        <td><%= link_to 'Excluir', user_story_acceptance_criterion, method: :delete, data: { confirm: 'Você tem certeza disso?' }, class: 'ui tiny red basic button' %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Nova User Story Acceptance Criterion', new_user_story_acceptance_criterion_path, class: 'ui teal button' %>
