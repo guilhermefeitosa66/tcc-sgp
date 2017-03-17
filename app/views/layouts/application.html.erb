@@ -1,14 +1,37 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Sgp</title>
+    <title>Sistema de gerenciamento de projetos</title>
     <%= csrf_meta_tags %>
-
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true  %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= yield :style_css %>
+    <%= yield :script_js %>
   </head>
 
   <body>
-    <%= yield %>
+    <% if user_signed_in? %>
+      <%= render partial: "layouts/user_top_menu" %>
+      <%= render partial: "layouts/user_sidebar_menu" %>
+      <%= render partial: "shared/top" %>
+    <% end %>
+    <!-- content -->
+    <div class="pusher main-pusher">
+      <%= render 'layouts/alert_message' %>
+      <%= yield %>
+    </div>
+    <script>
+$(document).ready(function() {
+    // create sidebar and attach to menu open
+    $('.ui.sidebar').sidebar('attach events', '.toc.item');
+    $('.ui.dropdown').dropdown();
+    $('.message .close').on('click', function() {
+      $(this)
+        .closest('.message')
+        .transition('fade');
+    });
+  });
+</script>
   </body>
 </html>

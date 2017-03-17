@@ -23,6 +23,7 @@ gem 'coffee-rails', '~> 4.2'
 
 # Add manualmente
 gem 'devise'
+gem 'semantic-ui-sass', github: 'doabit/semantic-ui-sass'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
