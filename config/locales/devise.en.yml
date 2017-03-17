@@ -2,6 +2,13 @@
 
 # Utilize-o em 'config/locales/', com o nome de 'devise.pt-BR.yml'.
 # Em 'config/application.rb', utilize => config.i18n.default_locale = :'pt-BR'
+pt-BR:
+  devise:
+    registrations:
+      user:
+        signed_up_but_not_approved: 'Você efetuou o cadastro com sucesso, aguarde o administrator aprovar o seu login'
+    failure:
+      not_approved: 'Sua conta ainda não foi aprovada pelo administrador.'
 
 pt-BR:
   devise:

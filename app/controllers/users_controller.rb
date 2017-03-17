@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :configure_permitted_parameters, if: :devise_controller?
 
   # GET /users
   # GET /users.json
@@ -61,6 +62,21 @@ class UsersController < ApplicationController
     end
   end
 
+  def change_approved
+    @user = User.find(params[:id])
+    @user.approved = !@user.approved
+    @user.save
+    respond_to do |format|
+      if @user.approved == true
+        format.html { redirect_to @user, notice: t(".notice_true") }
+        format.json { render :index, status: :ok, location: @user }
+      else
+        format.html { redirect_to @user, notice: t(".notice_false") }
+        format.json { render :index, status: :ok, location: @user }
+      end
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
@@ -69,6 +85,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.fetch(:user, {})
+      params.require(:user).permit(:id,:name, :admin, :email, :encrypted_password,:avatar, :avatar_cache)
     end
 end

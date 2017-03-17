@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170317172414) do
+ActiveRecord::Schema.define(version: 20170317200310) do
 
   create_table "abilities", force: :cascade do |t|
     t.string   "name"
@@ -182,6 +182,7 @@ ActiveRecord::Schema.define(version: 20170317172414) do
     t.datetime "created_at",                             null: false
     t.datetime "updated_at",                             null: false
     t.boolean  "approved",               default: false, null: false
+    t.string   "avatar"
     t.index ["approved"], name: "index_users_on_approved"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["local_id"], name: "index_users_on_local_id"

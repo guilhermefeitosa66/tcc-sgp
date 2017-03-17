@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  get 'dashboard/index'
+  get 'dashboard/index', to: 'dashboard#index', as: :dashboard_index
+  get 'dashboard/normal', to: 'dashboard#normal', as: :dashboard_normal
+
   root to: 'dashboard#index'
   resources :languages
   resources :user_tasks
@@ -23,5 +25,4 @@ Rails.application.routes.draw do
     resources :users
   end
   get 'users/change_approved/:id', to: 'users#change_approved', as: :change_approved
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

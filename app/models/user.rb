@@ -4,6 +4,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
   :recoverable, :rememberable, :trackable, :validatable
 
+  # Foto
+  mount_uploader :avatar, AvatarUploader
+
   # Permissão de acesso ao sistema apenas quando administrador validar
   def active_for_authentication?
     super && approved?
