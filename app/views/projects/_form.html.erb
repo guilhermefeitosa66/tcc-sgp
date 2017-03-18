@@ -1,3 +1,4 @@
+
 <div class="ui form">
   <h4 class="ui dividing header">Informações</h4>
   <%= form_for(project) do |f| %>
@@ -15,27 +16,29 @@
 
       <div class="field">
         <%= f.label :name %>
-      <%= f.text_field :name %>
+        <%= f.text_field :name %>
       </div>
 
       <div class="field">
-        <%= f.label :size %>
-      <%= f.number_field :size %>
+        <%= f.label :size, id: 'project_label_size' %>
+        <%= f.range_field :size, :in => 0..10000, :step => '.1' %>
       </div>
 
-      <div class="field">
-        <%= f.label :start_date %>
-      <%= f.date_select :start_date %>
-      </div>
+
+
+        <div class="field">
+          <%= f.label :start_date %>
+          <%= f.date_select :start_date %>
+        </div>
 
       <div class="field">
         <%= f.label :end_date %>
-      <%= f.date_select :end_date %>
+        <%= f.date_select :end_date, {:class => "input-mini"} %>
       </div>
 
       <div class="field">
         <%= f.label :local_id %>
-      <%= f.text_field :local_id %>
+        <%= f.collection_select(:local_id, Local.all, :id, :name, {:prompt=>true}, {:class=>'ui search dropdown'}) %>
       </div>
 
       <div class="actions">
@@ -43,3 +46,11 @@
     </div>
   <% end %>
 </div>
+<script type="text/javascript">
+  $(".form").change(function() {
+    input = $("#project_size").val();
+    label = $("#project_label_size");
+    label.text("Tamanho " + input);
+    console.log("Current Value = " + input);
+  })
+</script>

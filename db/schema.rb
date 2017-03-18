@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170317200310) do
+ActiveRecord::Schema.define(version: 20170318141308) do
 
   create_table "abilities", force: :cascade do |t|
     t.string   "name"
@@ -129,8 +129,9 @@ ActiveRecord::Schema.define(version: 20170317200310) do
   create_table "user_languages", force: :cascade do |t|
     t.integer  "language_id"
     t.integer  "user_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.integer  "proficiency", default: 0
     t.index ["language_id"], name: "index_user_languages_on_language_id"
     t.index ["user_id"], name: "index_user_languages_on_user_id"
   end

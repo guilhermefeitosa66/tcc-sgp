@@ -75,6 +75,7 @@ pt-BR:
           user_language:
             language_id: Linguagem
             user_id: Usuário
+            proficiency: Proeficiência
           user_story:
             description: Descrição
             business_value: Valor de nêgocio

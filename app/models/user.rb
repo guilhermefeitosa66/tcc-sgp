@@ -22,5 +22,11 @@ class User < ApplicationRecord
 
   # Relacionamentos
   belongs_to :local
+  has_many :user_languages
+  has_many :languages, through: :user_languages
+  has_many :function_user_projects
+  has_many :projects, through: :function_user_projects
+  has_many :functions, through: :function_user_projects
+
   accepts_nested_attributes_for :local, reject_if: :all_blank, allow_destroy: true
 end

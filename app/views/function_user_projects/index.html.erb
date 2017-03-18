@@ -14,9 +14,9 @@
   <tbody>
     <% @function_user_projects.each do |function_user_project| %>
       <tr>
-        <td><%= function_user_project.project %></td>
-        <td><%= function_user_project.function %></td>
-        <td><%= function_user_project.user %></td>
+        <td><%= function_user_project.project.name %></td>
+        <td><%= function_user_project.function.name %></td>
+        <td><%= function_user_project.user.name %></td>
         <td><%= link_to 'Detalhes', function_user_project, class: 'ui tiny blue basic button' %></td>
         <td><%= link_to 'Editar', edit_function_user_project_path(function_user_project), class: 'ui tiny blue basic button' %></td>
         <td><%= link_to 'Excluir', function_user_project, method: :delete, data: { confirm: 'Você tem certeza disso?' }, class: 'ui tiny red basic button' %></td>

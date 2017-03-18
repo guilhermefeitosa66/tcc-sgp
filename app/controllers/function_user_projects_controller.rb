@@ -15,6 +15,7 @@ class FunctionUserProjectsController < ApplicationController
   # GET /function_user_projects/new
   def new
     @function_user_project = FunctionUserProject.new
+
   end
 
   # GET /function_user_projects/1/edit
@@ -28,10 +29,10 @@ class FunctionUserProjectsController < ApplicationController
 
     respond_to do |format|
       if @function_user_project.save
-        format.html { redirect_to @function_user_project, notice: 'Function user project was successfully created.' }
+        format.html { redirect_to project_path(@function_user_project.project), notice: 'Membro adicionando com sucesso ao projeto.' }
         format.json { render :show, status: :created, location: @function_user_project }
       else
-        format.html { render :new }
+        format.html { render :new, project: @function_user_project.project_id, notice: "o id dessa merda é #{@function_user_project.project_id}" }
         format.json { render json: @function_user_project.errors, status: :unprocessable_entity }
       end
     end
@@ -42,7 +43,7 @@ class FunctionUserProjectsController < ApplicationController
   def update
     respond_to do |format|
       if @function_user_project.update(function_user_project_params)
-        format.html { redirect_to @function_user_project, notice: 'Function user project was successfully updated.' }
+        format.html { redirect_to project_path(@function_user_project.project), notice: 'Função do membro do projeto atualizada com sucesso.' }
         format.json { render :show, status: :ok, location: @function_user_project }
       else
         format.html { render :edit }
@@ -56,7 +57,7 @@ class FunctionUserProjectsController < ApplicationController
   def destroy
     @function_user_project.destroy
     respond_to do |format|
-      format.html { redirect_to function_user_projects_url, notice: 'Function user project was successfully destroyed.' }
+      format.html { redirect_to project_path(@function_user_project.project), notice: 'Membro foi excluido do projeto.' }
       format.json { head :no_content }
     end
   end

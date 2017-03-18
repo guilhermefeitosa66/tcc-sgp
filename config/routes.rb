@@ -7,16 +7,20 @@ Rails.application.routes.draw do
   resources :user_tasks
   resources :task_requirements
   resources :user_abilities
-  resources :tasks
   resources :user_story_acceptance_criterions
   resources :user_stories
-  resources :sprints
   resources :user_languages
-  resources :releases
   resources :function_user_projects
   devise_for :users, controllers: {registrations: 'users/registrations'}
-  resources :themes
-  resources :projects
+
+  resources :projects do
+    resources :releases
+    resources :sprints
+    resources :tasks
+    resources :themes
+  end
+
+  get 'get/project', to: 'projects#select', as: :selection_project
   resources :locals
   resources :functions
   resources :abilities

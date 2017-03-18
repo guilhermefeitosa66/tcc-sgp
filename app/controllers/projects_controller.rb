@@ -1,6 +1,10 @@
 class ProjectsController < ApplicationController
   before_action :set_project, only: [:show, :edit, :update, :destroy]
 
+  def select
+      @projects = current_user.projects
+      session[:project] = params['project_id'] if params['project_id']
+  end
   # GET /projects
   # GET /projects.json
   def index
@@ -10,6 +14,7 @@ class ProjectsController < ApplicationController
   # GET /projects/1
   # GET /projects/1.json
   def show
+    @function_user_project = FunctionUserProject.new
   end
 
   # GET /projects/new

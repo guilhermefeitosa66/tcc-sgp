@@ -13,19 +13,22 @@
       </div>
     <% end %>
 
-      <div class="field">
-        <%= f.label :project_id %>
-      <%= f.text_field :project_id %>
-      </div>
+      <%= f.hidden_field :project_id, value: params['project'] %>
 
       <div class="field">
         <%= f.label :function_id %>
-      <%= f.text_field :function_id %>
+        <%= f.collection_select(:function_id, Function.all, :id, :name, {:prompt=>true}, {:class=>'ui search dropdown'}) %>
       </div>
 
       <div class="field">
         <%= f.label :user_id %>
-      <%= f.text_field :user_id %>
+        <% if params['project'] %>
+          <% project = params['project'] %>
+          <%= f.collection_select(:user_id, FunctionUserProject.available_user_for(project), :id, :name, {:prompt=>true}, {:class=>'ui search dropdown'}) %>
+        <% else %>
+          <% project = @function_user_project.project_id %>
+          <%= f.collection_select(:user_id, FunctionUserProject.available_user_for(project), :id, :name, {:prompt=>true}, {:class=>'ui search dropdown'}) %>
+        <% end %>
       </div>
 
       <div class="actions">

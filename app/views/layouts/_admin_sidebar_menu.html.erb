@@ -17,7 +17,21 @@
 
   <%= link_to locals_path, class: "#{is_current_page?(locals_path)} item" do %>
   <i class="home icon"></i>
-    Inicio
+    Localidades
   <% end %>
 
+  <%= link_to languages_path, class: "#{is_current_page?(languages_path)} item" do %>
+  <i class="home icon"></i>
+    Linguagens
+  <% end %>
+
+  <%= link_to projects_path, class: "#{is_current_page?(projects_path)} item" do %>
+  <i class="home icon"></i>
+    Projetos
+  <% end %>
+
+  <%= link_to functions_path, class: "#{is_current_page?(functions_path)} item" do %>
+  <i class="home icon"></i>
+    Funções
+  <% end %>
 </div>
