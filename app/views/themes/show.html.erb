@@ -1,14 +1,16 @@
 <div class='ui padded center aligned teal segment show'>
     <p>
-    <strong>name:</strong>
+    <strong>Nome:</strong>
     <%= @theme.name %>
   </p>
 
     <p>
-    <strong>project:</strong>
-    <%= @theme.project %>
+    <strong>Projeto:</strong>
+    <%= @theme.project.name %>
   </p>
 
-    <%= link_to 'Editar', edit_theme_path(@theme), class: 'ui button' %>
-  <%= link_to 'Voltar', themes_path, class: 'ui button' %>
+  <%= link_to 'Editar', edit_project_theme_path(@project,@theme), class: 'ui button' %>
+  <%= link_to 'Voltar', project_themes_path(@project), class: 'ui button' %>
 </div>
+
+<%= render 'user_stories/index' %>

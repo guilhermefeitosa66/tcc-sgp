@@ -1,29 +1,24 @@
 <div class='ui padded center aligned teal segment show'>
     <p>
-    <strong>description:</strong>
+    <strong>Descrição:</strong>
     <%= @user_story.description %>
   </p>
 
     <p>
-    <strong>business_value:</strong>
+    <strong>Valor de negócio:</strong>
     <%= @user_story.business_value %>
   </p>
 
     <p>
-    <strong>status:</strong>
+    <strong>Status:</strong>
     <%= @user_story.status %>
   </p>
 
     <p>
-    <strong>story_points:</strong>
+    <strong>Story points:</strong>
     <%= @user_story.story_points %>
   </p>
 
-    <p>
-    <strong>theme:</strong>
-    <%= @user_story.theme %>
-  </p>
-
-    <%= link_to 'Editar', edit_user_story_path(@user_story), class: 'ui button' %>
-  <%= link_to 'Voltar', user_stories_path, class: 'ui button' %>
+  <%= link_to 'Editar', edit_project_theme_user_story_path(@project, @theme, @user_story), class: 'ui button' %>
+  <%= link_to 'Voltar', [@project, @theme], class: 'ui button' %>
 </div>

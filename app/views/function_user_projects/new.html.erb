@@ -1,5 +1,5 @@
-<h1>Novo Function User Project</h1>
+<h1>Adicionar membro ao projeto: <%= @project.name %></h1>
 
-<%= render 'form', function_user_project: @function_user_project %>
+<%= render 'form' %>
 
-<%= link_to 'Voltar', function_user_projects_path, class: 'ui button' %>
+<%= link_to 'Voltar', project_path(@project), class: 'ui button' %>

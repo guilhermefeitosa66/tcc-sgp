@@ -2,5 +2,5 @@
 
 <%= render 'form', user_story: @user_story %>
 
-<%= link_to 'Detalhes', @user_story, class: 'ui button' %> 
-<%= link_to 'Voltar', user_stories_path, class: 'ui button' %>
+<%= link_to 'Detalhes', [@project, @theme, @user_story], class: 'ui button' %>
+<%= link_to 'Voltar', project_theme_user_stories_path(@project, @theme), class: 'ui button' %>

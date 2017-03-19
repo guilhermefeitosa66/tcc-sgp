@@ -1,19 +1,14 @@
 
-<h1 class="ui header" >Sprints</h1>
+<h1 class="ui header" ><%= @project.name %>: Sprints</h1>
 
 <table class='ui orange table'>
   <thead>
     <tr>
-      <th>Project</th>
-      <th>Start date</th>
-      <th>End date</th>
-      <th>Planning start date</th>
-      <th>Planning end date</th>
-      <th>Execution start date</th>
-      <th>Execution end date</th>
-      <th>Review meeting date</th>
-      <th>Retrospective meeting date</th>
-      <th>Release</th>
+      <th>Data ínicio</th>
+      <th>Data de termino</th>
+      <th>Inicio de execução</th>
+      <th>Termino de execução</th>
+      <th>Release versão</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -21,19 +16,14 @@
   <tbody>
     <% @sprints.each do |sprint| %>
       <tr>
-        <td><%= sprint.project %></td>
         <td><%= sprint.start_date %></td>
         <td><%= sprint.end_date %></td>
-        <td><%= sprint.planning_start_date %></td>
-        <td><%= sprint.planning_end_date %></td>
-        <td><%= sprint.execution_start_date %></td>
         <td><%= sprint.execution_end_date %></td>
         <td><%= sprint.review_meeting_date %></td>
-        <td><%= sprint.retrospective_meeting_date %></td>
-        <td><%= sprint.release %></td>
-        <td><%= link_to 'Detalhes', sprint, class: 'ui tiny blue basic button' %></td>
-        <td><%= link_to 'Editar', edit_sprint_path(sprint), class: 'ui tiny blue basic button' %></td>
-        <td><%= link_to 'Excluir', sprint, method: :delete, data: { confirm: 'Você tem certeza disso?' }, class: 'ui tiny red basic button' %></td>
+        <td><%= (sprint.release) ? sprint.release : "Não há release para essa Sprint" %></td>
+        <td><%= link_to 'Detalhes', [@project,sprint], class: 'ui tiny blue basic button' %></td>
+        <td><%= link_to 'Editar', edit_project_sprint_path(sprint), class: 'ui tiny blue basic button' %></td>
+        <td><%= link_to 'Excluir', [@project, sprint], method: :delete, data: { confirm: 'Você tem certeza disso?' }, class: 'ui tiny red basic button' %></td>
       </tr>
     <% end %>
   </tbody>
@@ -41,4 +31,4 @@
 
 <br>
 
-<%= link_to 'Nova Sprint', new_sprint_path, class: 'ui teal button' %>
+<%= link_to 'Nova Sprint', new_project_sprint_path(@project), class: 'ui teal button' %>

@@ -11,12 +11,12 @@
 
     <p>
     <strong>Data de ínicio:</strong>
-    <%= @project.start_date %>
+    <%= l @project.start_date %>
   </p>
 
     <p>
     <strong>Data de termino:</strong>
-    <%= @project.end_date %>
+    <%= l @project.end_date %>
   </p>
 
     <p>
@@ -28,8 +28,11 @@
     <%= link_to 'Voltar', projects_path, class: 'ui button' %>
 </div>
 
+
 <div class='ui padded center aligned blue segment show'>
-  <%= link_to 'Adicionar membro ao projeto', new_function_user_project_path(@function_user_project, project: @project.id),class: 'ui positive button'%>
+  <%= link_to 'Adicionar membro ao projeto', new_project_function_user_project_path(@project,@function_user_project),class: 'ui positive button'%>
+  <%= link_to 'Gerenciar Sprints', project_sprints_path(@project),class: 'ui positive button'%>
+  <%= link_to 'Gerenciar Temas', project_themes_path(@project),class: 'ui positive button'%>
 </div>
 
 <h1 class"ui header">Membros do projeto</h1>
@@ -47,8 +50,8 @@
       <tr>
         <td><%= member.user.name %></td>
         <td><%= member.function.name %></td>
-        <td><%= link_to 'Editar', edit_function_user_project_path(member, project: @project.id), class: 'ui tiny blue basic button' %></td>
-        <<td><%= link_to 'Excluir', function_user_project_path(member), method: :delete, data: { confirm: 'Você tem certeza que deseja excluir o membro desse projeto?' }, class: 'ui tiny red basic button' %></td>
+        <td><%= link_to 'Editar', edit_project_function_user_project_path(@project,member, edit: :true), class: 'ui tiny blue basic button' %></td>
+        <td><%= link_to 'Excluir', project_function_user_project_path(@project,member), method: :delete, data: { confirm: 'Você tem certeza que deseja excluir o membro desse projeto?' }, class: 'ui tiny red basic button' %></td>
       </tr>
     <% end %>
   </tbody>

@@ -4,20 +4,22 @@ Rails.application.routes.draw do
 
   root to: 'dashboard#index'
   resources :languages
-  resources :user_tasks
   resources :task_requirements
+  resources :user_tasks
   resources :user_abilities
-  resources :user_story_acceptance_criterions
-  resources :user_stories
   resources :user_languages
-  resources :function_user_projects
   devise_for :users, controllers: {registrations: 'users/registrations'}
 
   resources :projects do
+    resources :function_user_projects
     resources :releases
     resources :sprints
     resources :tasks
-    resources :themes
+    resources :themes do
+      resources :user_stories do
+        resources :user_story_acceptance_criterions
+      end
+    end
   end
 
   get 'get/project', to: 'projects#select', as: :selection_project

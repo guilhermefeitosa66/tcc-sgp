@@ -1,5 +1,7 @@
 class UserStoriesController < ApplicationController
   before_action :set_user_story, only: [:show, :edit, :update, :destroy]
+  before_action :set_project
+  before_action :set_theme
 
   # GET /user_stories
   # GET /user_stories.json
@@ -25,10 +27,11 @@ class UserStoriesController < ApplicationController
   # POST /user_stories.json
   def create
     @user_story = UserStory.new(user_story_params)
+    @user_story.theme = @theme
 
     respond_to do |format|
       if @user_story.save
-        format.html { redirect_to @user_story, notice: 'User story was successfully created.' }
+        format.html { redirect_to [@project, @theme], notice: 'User story criada com sucesso.' }
         format.json { render :show, status: :created, location: @user_story }
       else
         format.html { render :new }
@@ -42,7 +45,7 @@ class UserStoriesController < ApplicationController
   def update
     respond_to do |format|
       if @user_story.update(user_story_params)
-        format.html { redirect_to @user_story, notice: 'User story was successfully updated.' }
+        format.html { redirect_to [@project, @theme, @user_story], notice: 'User story atualizada com sucesso.' }
         format.json { render :show, status: :ok, location: @user_story }
       else
         format.html { render :edit }
@@ -56,7 +59,7 @@ class UserStoriesController < ApplicationController
   def destroy
     @user_story.destroy
     respond_to do |format|
-      format.html { redirect_to user_stories_url, notice: 'User story was successfully destroyed.' }
+      format.html { redirect_to [@project, @theme], notice: 'User story deletada com sucesso.' }
       format.json { head :no_content }
     end
   end
@@ -65,6 +68,14 @@ class UserStoriesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_user_story
       @user_story = UserStory.find(params[:id])
+    end
+
+    def set_project
+      @project = Project.find(params[:project_id])
+    end
+
+    def set_theme
+      @theme = Theme.find(params[:theme_id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

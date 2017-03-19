@@ -1,5 +1,6 @@
 class FunctionUserProjectsController < ApplicationController
   before_action :set_function_user_project, only: [:show, :edit, :update, :destroy]
+  before_action :set_project
 
   # GET /function_user_projects
   # GET /function_user_projects.json
@@ -15,7 +16,7 @@ class FunctionUserProjectsController < ApplicationController
   # GET /function_user_projects/new
   def new
     @function_user_project = FunctionUserProject.new
-
+    @function_user_project.project = @project
   end
 
   # GET /function_user_projects/1/edit
@@ -26,7 +27,7 @@ class FunctionUserProjectsController < ApplicationController
   # POST /function_user_projects.json
   def create
     @function_user_project = FunctionUserProject.new(function_user_project_params)
-
+    @function_user_project.project = @project
     respond_to do |format|
       if @function_user_project.save
         format.html { redirect_to project_path(@function_user_project.project), notice: 'Membro adicionando com sucesso ao projeto.' }
@@ -43,6 +44,7 @@ class FunctionUserProjectsController < ApplicationController
   def update
     respond_to do |format|
       if @function_user_project.update(function_user_project_params)
+        @function_user_project.project = @project
         format.html { redirect_to project_path(@function_user_project.project), notice: 'Função do membro do projeto atualizada com sucesso.' }
         format.json { render :show, status: :ok, location: @function_user_project }
       else
@@ -66,6 +68,10 @@ class FunctionUserProjectsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_function_user_project
       @function_user_project = FunctionUserProject.find(params[:id])
+    end
+
+    def set_project
+      @project = Project.find(params[:project_id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

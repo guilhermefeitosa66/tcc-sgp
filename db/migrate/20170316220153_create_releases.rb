@@ -1,9 +1,9 @@
 class CreateReleases < ActiveRecord::Migration[5.0]
   def change
     create_table :releases do |t|
-      t.string :version
-      t.date :deliver_date
-      t.references :project, foreign_key: true
+      t.string :version, null: false
+      t.date :deliver_date, null: false
+      t.references :project, foreign_key: true, null: false
 
       t.timestamps
     end

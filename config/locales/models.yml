@@ -46,7 +46,7 @@ pt-BR:
             version: Versão
             deliver_date: Data de entrega
             project_id: Projeto
-          spring:
+          sprint:
             project_id: Projeto
             start_date: Data de ínicio
             end_date: Data de termino
@@ -78,7 +78,7 @@ pt-BR:
             proficiency: Proeficiência
           user_story:
             description: Descrição
-            business_value: Valor de nêgocio
+            business_value: Valor de negócio
             status: Estado
             story_points: Pontos de relator
             theme_id: Tema

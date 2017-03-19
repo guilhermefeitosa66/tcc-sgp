@@ -1,10 +1,11 @@
 class SprintsController < ApplicationController
   before_action :set_sprint, only: [:show, :edit, :update, :destroy]
+  before_action :set_project
 
   # GET /sprints
   # GET /sprints.json
   def index
-    @sprints = Sprint.all
+    @sprints = Sprint.where(project: @project)
   end
 
   # GET /sprints/1
@@ -15,6 +16,7 @@ class SprintsController < ApplicationController
   # GET /sprints/new
   def new
     @sprint = Sprint.new
+    @release = Release.new
   end
 
   # GET /sprints/1/edit
@@ -65,6 +67,10 @@ class SprintsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_sprint
       @sprint = Sprint.find(params[:id])
+    end
+
+    def set_project
+      @project = Project.find(params[:project_id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
