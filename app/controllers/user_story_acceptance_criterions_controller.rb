@@ -1,5 +1,8 @@
 class UserStoryAcceptanceCriterionsController < ApplicationController
   before_action :set_user_story_acceptance_criterion, only: [:show, :edit, :update, :destroy]
+  before_action :set_user_story
+  before_action :set_project
+  before_action :set_theme
 
   # GET /user_story_acceptance_criterions
   # GET /user_story_acceptance_criterions.json
@@ -25,14 +28,12 @@ class UserStoryAcceptanceCriterionsController < ApplicationController
   # POST /user_story_acceptance_criterions.json
   def create
     @user_story_acceptance_criterion = UserStoryAcceptanceCriterion.new(user_story_acceptance_criterion_params)
-
+    @user_story_acceptance_criterion.user_story = @user_story
     respond_to do |format|
       if @user_story_acceptance_criterion.save
-        format.html { redirect_to @user_story_acceptance_criterion, notice: 'User story acceptance criterion was successfully created.' }
-        format.json { render :show, status: :created, location: @user_story_acceptance_criterion }
+        format.html { redirect_to [@project, @theme, @user_story, @user_story_acceptance_criterion], notice: 'Critério de aceitação criado com sucesso.' }
       else
         format.html { render :new }
-        format.json { render json: @user_story_acceptance_criterion.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -42,11 +43,9 @@ class UserStoryAcceptanceCriterionsController < ApplicationController
   def update
     respond_to do |format|
       if @user_story_acceptance_criterion.update(user_story_acceptance_criterion_params)
-        format.html { redirect_to @user_story_acceptance_criterion, notice: 'User story acceptance criterion was successfully updated.' }
-        format.json { render :show, status: :ok, location: @user_story_acceptance_criterion }
+        format.html { redirect_to [@project, @theme, @user_story, @user_story_acceptance_criterion], notice: 'Critério de aceitação atualizado com sucesso.' }
       else
         format.html { render :edit }
-        format.json { render json: @user_story_acceptance_criterion.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -56,8 +55,7 @@ class UserStoryAcceptanceCriterionsController < ApplicationController
   def destroy
     @user_story_acceptance_criterion.destroy
     respond_to do |format|
-      format.html { redirect_to user_story_acceptance_criterions_url, notice: 'User story acceptance criterion was successfully destroyed.' }
-      format.json { head :no_content }
+      format.html { redirect_to  [@project, @theme, @user_story], notice: 'Critério de aceitação deletado com sucesso .' }
     end
   end
 
@@ -65,6 +63,18 @@ class UserStoryAcceptanceCriterionsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_user_story_acceptance_criterion
       @user_story_acceptance_criterion = UserStoryAcceptanceCriterion.find(params[:id])
+    end
+
+    def set_project
+      @project = Project.find(params[:project_id])
+    end
+
+    def set_theme
+      @theme = Theme.find(params[:theme_id])
+    end
+
+    def set_user_story
+      @user_story = UserStory.find(params[:user_story_id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

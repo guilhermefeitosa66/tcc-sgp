@@ -10,22 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170318141308) do
+ActiveRecord::Schema.define(version: 20170321195804) do
 
   create_table "abilities", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
     t.integer  "scope"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "function_user_projects", force: :cascade do |t|
     t.integer  "project_id"
     t.integer  "function_id"
     t.integer  "user_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["function_id"], name: "index_function_user_projects_on_function_id"
     t.index ["project_id"], name: "index_function_user_projects_on_project_id"
     t.index ["user_id"], name: "index_function_user_projects_on_user_id"
@@ -67,8 +67,8 @@ ActiveRecord::Schema.define(version: 20170318141308) do
     t.string   "version"
     t.date     "deliver_date"
     t.integer  "project_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
     t.index ["project_id"], name: "index_releases_on_project_id"
   end
 
@@ -83,8 +83,8 @@ ActiveRecord::Schema.define(version: 20170318141308) do
     t.date     "review_meeting_date"
     t.date     "retrospective_meeting_date"
     t.integer  "release_id"
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["project_id"], name: "index_sprints_on_project_id"
     t.index ["release_id"], name: "index_sprints_on_release_id"
   end
@@ -106,6 +106,8 @@ ActiveRecord::Schema.define(version: 20170318141308) do
     t.integer  "user_story_id"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+    t.integer  "sprint_id"
+    t.index ["sprint_id"], name: "index_tasks_on_sprint_id"
     t.index ["user_story_id"], name: "index_tasks_on_user_story_id"
   end
 

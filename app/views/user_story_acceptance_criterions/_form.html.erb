@@ -1,6 +1,6 @@
 <div class="ui form">
   <h4 class="ui dividing header">Informações</h4>
-  <%= form_for(user_story_acceptance_criterion) do |f| %>
+  <%= form_for([@project, @theme, @user_story, user_story_acceptance_criterion]) do |f| %>
     <% if user_story_acceptance_criterion.errors.any? %>
       <div id="error_explanation">
         <h2><%= pluralize(user_story_acceptance_criterion.errors.count, "error") %> prohibited this user_story_acceptance_criterion from being saved:</h2>
@@ -15,17 +15,12 @@
 
       <div class="field">
         <%= f.label :description %>
-      <%= f.text_area :description %>
+        <%= f.text_area :description %>
       </div>
 
       <div class="field">
         <%= f.label :status %>
-      <%= f.number_field :status %>
-      </div>
-
-      <div class="field">
-        <%= f.label :user_story_id %>
-      <%= f.text_field :user_story_id %>
+        <%= f.number_field :status %>
       </div>
 
       <div class="actions">

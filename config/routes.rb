@@ -13,8 +13,12 @@ Rails.application.routes.draw do
   resources :projects do
     resources :function_user_projects
     resources :releases
-    resources :sprints
-    resources :tasks
+    resources :sprints do
+      resources :user_stories do # Recurso carregado duas vezes para facilitar no controler
+        resources :tasks
+      end
+    end
+
     resources :themes do
       resources :user_stories do
         resources :user_story_acceptance_criterions

@@ -12,6 +12,7 @@ class UserStoriesController < ApplicationController
   # GET /user_stories/1
   # GET /user_stories/1.json
   def show
+    @user_story_acceptance_criterions = @user_story.user_story_acceptance_criterions
   end
 
   # GET /user_stories/new
