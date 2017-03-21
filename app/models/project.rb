@@ -5,6 +5,11 @@ class Project < ApplicationRecord
     rand(1...100)
   end
 
+  # Projetos em aberto
+  def self.available
+    Project.all
+  end
+
   # Relacionamentos
   has_many :function_user_projects
   has_many :users, through: :function_user_projects

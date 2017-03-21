@@ -28,11 +28,9 @@ class AbilitiesController < ApplicationController
 
     respond_to do |format|
       if @ability.save
-        format.html { redirect_to @ability, notice: 'Ability was successfully created.' }
-        format.json { render :show, status: :created, location: @ability }
+        format.html { redirect_to @ability, notice: 'Criada com sucesso' }
       else
         format.html { render :new }
-        format.json { render json: @ability.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -42,11 +40,9 @@ class AbilitiesController < ApplicationController
   def update
     respond_to do |format|
       if @ability.update(ability_params)
-        format.html { redirect_to @ability, notice: 'Ability was successfully updated.' }
-        format.json { render :show, status: :ok, location: @ability }
+        format.html { redirect_to @ability, notice: 'Habilidade atualizada com sucesso.' }
       else
         format.html { render :edit }
-        format.json { render json: @ability.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -56,8 +52,7 @@ class AbilitiesController < ApplicationController
   def destroy
     @ability.destroy
     respond_to do |format|
-      format.html { redirect_to abilities_url, notice: 'Ability was successfully destroyed.' }
-      format.json { head :no_content }
+      format.html { redirect_to abilities_url, notice: 'Habilidade deletada com sucesso.' }
     end
   end
 

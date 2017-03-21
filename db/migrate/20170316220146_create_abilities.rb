@@ -3,7 +3,7 @@ class CreateAbilities < ActiveRecord::Migration[5.0]
     create_table :abilities do |t|
       t.string :name, null: false
       t.text :description
-      t.integer :scope, default: 0
+      t.integer :scope
 
       t.timestamps
     end

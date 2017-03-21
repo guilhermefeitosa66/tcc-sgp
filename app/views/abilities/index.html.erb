@@ -1,11 +1,11 @@
 
-<h1 class="ui header" >Abilities</h1>
+<h1 class="ui header" >Habilidades</h1>
 
 <table class='ui orange table'>
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Description</th>
+      <th>Nome</th>
+      <th>Descrição</th>
       <th>Scope</th>
       <th colspan="3"></th>
     </tr>
@@ -16,7 +16,7 @@
       <tr>
         <td><%= ability.name %></td>
         <td><%= ability.description %></td>
-        <td><%= ability.scope %></td>
+        <td><%= ability.project.name %></td>
         <td><%= link_to 'Detalhes', ability, class: 'ui tiny blue basic button' %></td>
         <td><%= link_to 'Editar', edit_ability_path(ability), class: 'ui tiny blue basic button' %></td>
         <td><%= link_to 'Excluir', ability, method: :delete, data: { confirm: 'Você tem certeza disso?' }, class: 'ui tiny red basic button' %></td>
@@ -27,4 +27,4 @@
 
 <br>
 
-<%= link_to 'Nova Ability', new_ability_path, class: 'ui teal button' %>
+<%= link_to 'Nova Habilidade', new_ability_path, class: 'ui teal button' %>
