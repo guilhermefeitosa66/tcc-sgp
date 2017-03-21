@@ -1,14 +1,19 @@
 <div class='ui padded center aligned teal segment show'>
-    <p>
-    <strong>user:</strong>
-    <%= @user_ability.user %>
+  <p>
+    <strong>Usuário:</strong>
+    <%= @user_ability.user.name %>
   </p>
 
-    <p>
-    <strong>ability:</strong>
-    <%= @user_ability.ability %>
+  <p>
+    <strong>Habilidade:</strong>
+    <%= @user_ability.ability.name %>
   </p>
 
-    <%= link_to 'Editar', edit_user_ability_path(@user_ability), class: 'ui button' %>
+  <p>
+    <strong>Pontos:</strong>
+    <%= @user_ability.points %>
+  </p>
+
+  <%= link_to 'Editar', edit_user_ability_path(@user_ability), class: 'ui button' %>
   <%= link_to 'Voltar', user_abilities_path, class: 'ui button' %>
 </div>

@@ -1,6 +1,6 @@
 <div class="ui form">
   <h4 class="ui dividing header">Informações da release</h4>
-  <%= form_for(release) do |f| %>
+  <%= form_for([@project, release]) do |f| %>
     <% if release.errors.any? %>
       <div id="error_explanation">
         <h2><%= pluralize(release.errors.count, "error") %> prohibited this release from being saved:</h2>
@@ -15,21 +15,16 @@
 
       <div class="field">
         <%= f.label :version %>
-      <%= f.text_field :version %>
+        <%= f.text_field :version %>
       </div>
 
       <div class="field">
         <%= f.label :deliver_date %>
-      <%= f.date_select :deliver_date %>
-      </div>
-
-      <div class="field">
-        <%= f.label :project_id %>
-      <%= f.text_field :project_id %>
+        <%= f.date_select :deliver_date %>
       </div>
 
       <div class="actions">
-      <%= f.submit class:'ui teal button' %>
-    </div>
+        <%= f.submit class:'ui teal button' %>
+      </div>
   <% end %>
 </div>

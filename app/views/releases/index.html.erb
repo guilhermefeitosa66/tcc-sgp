@@ -4,9 +4,8 @@
 <table class='ui orange table'>
   <thead>
     <tr>
-      <th>Version</th>
+      <th>Versão</th>
       <th>Deliver date</th>
-      <th>Project</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -16,10 +15,9 @@
       <tr>
         <td><%= release.version %></td>
         <td><%= release.deliver_date %></td>
-        <td><%= release.project %></td>
-        <td><%= link_to 'Detalhes', release, class: 'ui tiny blue basic button' %></td>
-        <td><%= link_to 'Editar', edit_release_path(release), class: 'ui tiny blue basic button' %></td>
-        <td><%= link_to 'Excluir', release, method: :delete, data: { confirm: 'Você tem certeza disso?' }, class: 'ui tiny red basic button' %></td>
+        <td><%= link_to 'Detalhes', [@project, release], class: 'ui tiny blue basic button' %></td>
+        <td><%= link_to 'Editar', edit_project_release_path(@project, release), class: 'ui tiny blue basic button' %></td>
+        <td><%= link_to 'Excluir', [@project, release], method: :delete, data: { confirm: 'Você tem certeza disso?' }, class: 'ui tiny red basic button' %></td>
       </tr>
     <% end %>
   </tbody>
@@ -27,4 +25,4 @@
 
 <br>
 
-<%= link_to 'Nova Release', new_release_path, class: 'ui teal button' %>
+<%= link_to 'Nova Release', new_project_release_path(@project), class: 'ui teal button' %>

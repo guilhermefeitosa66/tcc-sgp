@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170321195804) do
+ActiveRecord::Schema.define(version: 20170321225422) do
 
   create_table "abilities", force: :cascade do |t|
     t.string   "name",        null: false
@@ -120,10 +120,11 @@ ActiveRecord::Schema.define(version: 20170321195804) do
   end
 
   create_table "user_abilities", force: :cascade do |t|
-    t.integer  "user_id",    null: false
-    t.integer  "ability_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "user_id",                null: false
+    t.integer  "ability_id",             null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.integer  "points",     default: 0
     t.index ["ability_id"], name: "index_user_abilities_on_ability_id"
     t.index ["user_id"], name: "index_user_abilities_on_user_id"
   end

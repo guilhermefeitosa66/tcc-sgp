@@ -16,7 +16,6 @@ class ReleasesController < ApplicationController
   # GET /releases/new
   def new
     @release = Release.new
-    @release.project = @project
   end
 
   # GET /releases/1/edit
@@ -27,14 +26,13 @@ class ReleasesController < ApplicationController
   # POST /releases.json
   def create
     @release = Release.new(release_params)
+    @release.project = @project
 
     respond_to do |format|
       if @release.save
         format.html { redirect_to [@release.project, @release], notice: 'Release criada com sucesso.' }
-        format.json { render :show, status: :created, location: @release }
       else
         format.html { render :new }
-        format.json { render json: @release.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -44,11 +42,9 @@ class ReleasesController < ApplicationController
   def update
     respond_to do |format|
       if @release.update(release_params)
-        format.html { redirect_to @release, notice: 'Release atualizada com sucesso.' }
-        format.json { render :show, status: :ok, location: @release }
+        format.html { redirect_to [@project, @release], notice: 'Release atualizada com sucesso.' }
       else
         format.html { render :edit }
-        format.json { render json: @release.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -58,8 +54,7 @@ class ReleasesController < ApplicationController
   def destroy
     @release.destroy
     respond_to do |format|
-      format.html { redirect_to releases_url, notice: 'Release deletada.' }
-      format.json { head :no_content }
+      format.html { redirect_to project_releases_path(@project), notice: 'Release deletada.' }
     end
   end
 

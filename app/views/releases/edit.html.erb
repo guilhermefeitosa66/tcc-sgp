@@ -2,5 +2,5 @@
 
 <%= render 'form', release: @release %>
 
-<%= link_to 'Detalhes', @release, class: 'ui button' %> 
-<%= link_to 'Voltar', releases_path, class: 'ui button' %>
+<%= link_to 'Detalhes', [@project, @release], class: 'ui button' %>
+<%= link_to 'Voltar', project_releases_path, class: 'ui button' %>
